@@ -38,7 +38,7 @@ BEGIN
         p_id_pago           => 901,
         p_id_metodo_pago    => 101,
         p_monto             => 16900,
-        p_estado_pago       => 'PAGADO'
+        p_estado_pago       => 'EXITOSO'
     );
 END;
 /

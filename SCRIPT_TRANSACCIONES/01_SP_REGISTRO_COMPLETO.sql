@@ -49,7 +49,7 @@ CREATE OR REPLACE PROCEDURE SP_REGISTRO_COMPLETO (
 BEGIN
 
     -- Estado: Iniciada
-    DMBS_OUTPUT.PUT_LINE('El usuario ' || 
+    DBMS_OUTPUT.PUT_LINE('El usuario ' || 
     p_id_usuario || 
     ' activa el inicio de transacción.');
 
@@ -78,7 +78,22 @@ BEGIN
         p_correo
     );
 
-    -- 2. Crear perfil inicial
+    -- 2. Crear suscripcion inicial
+    INSERT INTO Suscripcion (
+        id_suscripcion,
+        id_plan,
+        id_usuario,
+        fecha_inicio,
+        fecha_final
+    ) VALUES (
+        p_id_suscripcion,
+        p_id_plan,
+        p_id_usuario,
+        p_fecha_inicio,
+        p_fecha_final
+    );
+
+    -- 3. Crear perfil inicial
     INSERT INTO Perfil (
         Perfil_ID,
         Usuario_id_usuario,
@@ -94,21 +109,6 @@ BEGIN
     );
 
     SAVEPOINT sp_usuario_perfil_creado;
-
-    -- 3. Crear suscripcion inicial
-    INSERT INTO Suscripcion (
-        id_suscripcion,
-        id_plan,
-        id_usuario,
-        fecha_inicio,
-        fecha_final
-    ) VALUES (
-        p_id_suscripcion,
-        p_id_plan,
-        p_id_usuario,
-        p_fecha_inicio,
-        p_fecha_final
-    );
 
     -- 4. Crear factura
     INSERT INTO Factura (
@@ -139,14 +139,14 @@ BEGIN
     );
 
     -- Estado: Parcialmente confirmada
-    DMBS_OUTPUT.PUT_LINE('El usuario ' ||
+    DBMS_OUTPUT.PUT_LINE('El usuario ' ||
         p_id_usuario ||
         ' tiene parcialmente confirmada una transacción, esta pendiente pago final');
 
     SAVEPOINT sp_facturacion_creada;
 
     -- 6. Validar primer pago
-    IF UPPER(p_estado_pago) <> 'PAGADO' THEN
+    IF UPPER(p_estado_pago) <> 'EXITOSO' THEN
         RAISE e_pago_no_confirmado;
     END IF;
 
@@ -170,7 +170,7 @@ BEGIN
     -- Punto de confirmacion definitiva.
     COMMIT;
 
-    DMBS_OUTPUT.PUT_LINE('El usuario ' ||
+    DBMS_OUTPUT.PUT_LINE('El usuario ' ||
         p_id_usuario ||
         ' completo y confirmo la transacción');
 
@@ -178,7 +178,7 @@ EXCEPTION
     WHEN e_pago_no_confirmado THEN
         
         -- Estado: Fallida
-        DMBS_OUTPUT.PUT_LINE('El usuario ' ||
+        DBMS_OUTPUT.PUT_LINE('El usuario ' ||
             p_id_usuario ||
             ' no confirmo la transacción (fallo), debido a que el pago no fue confirmado ' ||
             p_estado_pago);
@@ -188,7 +188,7 @@ EXCEPTION
         ROLLBACK;
 
         -- Estado: Abortada
-        DMBS_OUTPUT.PUT_LINE('El usuario ' ||
+        DBMS_OUTPUT.PUT_LINE('El usuario ' ||
             p_id_usuario ||
             ' aborto la operación, se ejecuta el rollback ');
 
@@ -199,7 +199,7 @@ EXCEPTION
 
     WHEN OTHERS THEN
         -- Estado: Fallida
-        DMBS_OUTPUT.PUT_LINE('El usuario ' ||
+        DBMS_OUTPUT.PUT_LINE('El usuario ' ||
             p_id_usuario ||
             ' no confirmo la transacción (fallo), Error inesperado' ||
             SQLERRM);
@@ -209,7 +209,7 @@ EXCEPTION
         ROLLBACK;
 
         -- Estado: Abortada
-        DMBS_OUTPUT.PUT_LINE('El usuario ' ||
+        DBMS_OUTPUT.PUT_LINE('El usuario ' ||
             p_id_usuario ||
             ' Rollback ejecutado por error inesperado.');
 
