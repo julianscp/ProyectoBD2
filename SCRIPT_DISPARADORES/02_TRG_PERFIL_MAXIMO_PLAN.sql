@@ -26,8 +26,7 @@ COMPOUND TRIGGER
         FROM Suscripcion s
         JOIN Plan p
             ON s.id_plan = p.id_plan
-        WHERE s.id_usuario = p_id_usuario
-          AND UPPER(s.estado_suscripcion) = 'ACTIVA';
+        WHERE s.id_usuario = p_id_usuario;
 
         CASE v_plan_nombre
             WHEN 'BASICO' THEN
