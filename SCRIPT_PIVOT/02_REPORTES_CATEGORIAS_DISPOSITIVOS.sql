@@ -14,7 +14,7 @@ FROM (
     INNER JOIN Contenido c
         ON r.id_contenido = c.id_contenido
     INNER JOIN Categoria cat
-        ON c.id_categoria = cat.id_categoria
+        ON c.id_tipo_categoria = cat.id_tipo_categoria
     INNER JOIN Dispositivo d
         ON r.id_dispositivo = d.id_dispositivo
 )
