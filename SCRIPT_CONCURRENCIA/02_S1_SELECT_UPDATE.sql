@@ -15,7 +15,6 @@ BEGIN
     INTO v_id_suscripcion, v_id_plan_actual
     FROM Suscripcion
     WHERE id_usuario = 101
-      AND estado_suscripcion = 'ACTIVA'
     FOR UPDATE;
 
     DBMS_OUTPUT.PUT_LINE('SESION 1: Fila bloqueada explicitamente.');

@@ -11,8 +11,7 @@ END;
 
 UPDATE Suscripcion
 SET id_plan = 102
-WHERE id_usuario = 101
-  AND estado_suscripcion = 'ACTIVA';
+WHERE id_usuario = 101;
 
 BEGIN
     DBMS_OUTPUT.PUT_LINE('SESION 1: Plan actualizado, pero aun NO confirmado.');
@@ -23,11 +22,9 @@ END;
 SELECT
     id_suscripcion,
     id_usuario,
-    id_plan,
-    estado_suscripcion
+    id_plan
 FROM Suscripcion
-WHERE id_usuario = 101
-  AND estado_suscripcion = 'ACTIVA';
+WHERE id_usuario = 101;
 
 -- NO ejecutar todavía:
 -- COMMIT;

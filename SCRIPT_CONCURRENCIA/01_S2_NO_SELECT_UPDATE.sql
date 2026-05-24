@@ -12,9 +12,8 @@ END;
 /
 
 UPDATE Suscripcion
-SET id_plan = 103
-WHERE id_usuario = 101
-  AND estado_suscripcion = 'ACTIVA';
+SET id_plan = 101
+WHERE id_usuario = 101;
 
 BEGIN
     DBMS_OUTPUT.PUT_LINE('SESION 2: La actualizacion se ejecuto despues de liberarse el bloqueo.');
