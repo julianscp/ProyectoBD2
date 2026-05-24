@@ -8,7 +8,7 @@
 -- ===================================================================== --
 
 BEGIN
-    SP_CAMBIAR_PLAN(102, 103);
+    SP_CAMBIAR_PLAN(102, 101);
     DBMS_OUTPUT.PUT_LINE('Prueba 1 OK: cambio de plan realizado correctamente.');
 EXCEPTION
     WHEN OTHERS THEN
@@ -22,7 +22,7 @@ END;
 -- ===================================================================== --
 
 BEGIN
-    SP_CAMBIAR_PLAN(101, 101);
+    SP_CAMBIAR_PLAN(101, 100s);
     DBMS_OUTPUT.PUT_LINE('Prueba 2 ERROR: el cambio no debio permitirse.');
 EXCEPTION
     WHEN OTHERS THEN
@@ -39,7 +39,7 @@ END;
 -- ===================================================================== --
 
 BEGIN
-    SP_CAMBIAR_PLAN(104, 103);
+    SP_CAMBIAR_PLAN(104, 102);
     DBMS_OUTPUT.PUT_LINE('Prueba 3 ERROR: el cambio no debio permitirse.');
 EXCEPTION
     WHEN OTHERS THEN
