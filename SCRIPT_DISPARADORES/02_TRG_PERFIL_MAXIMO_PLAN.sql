@@ -10,7 +10,7 @@ FOR INSERT ON Perfil
 COMPOUND TRIGGER
 
     -- Colección para almacenar usuarios afectados durante el INSERT.
-    TYPE t_usuarios_afectados IS TABLE OF Perfil.id_usuario%TYPE INDEX BY PLS_INTEGER;
+    TYPE t_usuarios_afectados IS TABLE OF Perfil.usuario_id_usuario%TYPE INDEX BY PLS_INTEGER;
     g_usuarios t_usuarios_afectados;
     g_index PLS_INTEGER := 0;
 
@@ -61,7 +61,7 @@ COMPOUND TRIGGER
     BEFORE EACH ROW IS
     BEGIN
         -- Validación mínima por fila: el perfil debe estar asociado a un usuario.
-        IF :NEW.id_usuario IS NULL THEN
+        IF :NEW.usuario_id_usuario IS NULL THEN
             RAISE_APPLICATION_ERROR(
                 -20043,
                 'El perfil debe estar asociado a un usuario.'
@@ -71,13 +71,13 @@ COMPOUND TRIGGER
         -- Guardar usuario afectado para validar después del INSERT.
         -- No se consulta PERFIL aquí para evitar tabla mutante.
         g_index := g_index + 1;
-        g_usuarios(g_index) := :NEW.id_usuario;
+        g_usuarios(g_index) := :NEW.usuario_id_usuario;
     END BEFORE EACH ROW;
 
     AFTER STATEMENT IS
         v_total_perfiles NUMBER;
         v_limite_perfiles NUMBER;
-        v_id_usuario Perfil.id_usuario%TYPE;
+        v_id_usuario Perfil.usuario_id_usuario%TYPE;
     BEGIN
         FOR i IN 1 .. g_index LOOP
             v_id_usuario := g_usuarios(i);
@@ -86,7 +86,7 @@ COMPOUND TRIGGER
             SELECT COUNT(*)
             INTO v_total_perfiles
             FROM Perfil
-            WHERE id_usuario = v_id_usuario;
+            WHERE usuario_id_usuario = v_id_usuario;
 
             IF v_total_perfiles > v_limite_perfiles THEN
                 RAISE_APPLICATION_ERROR(
