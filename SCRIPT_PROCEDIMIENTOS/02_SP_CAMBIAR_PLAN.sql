@@ -15,8 +15,8 @@ IS
     v_nombre_plan_actual   Plan.nombre%TYPE;
     v_nombre_plan_nuevo    Plan.nombre%TYPE;
     v_perfiles_actuales    NUMBER;
-    v_perfiles_plan_actual Plan.max_perfiles%TYPE;
-    v_perfiles_plan_nuevo  Plan.max_perfiles%TYPE;
+    v_perfiles_plan_actual Plan.maximo_perfiles%TYPE;
+    v_perfiles_plan_nuevo  Plan.maximo_perfiles%TYPE;
 
     -- Derclaración de excepción personalizada
     ex_perfiles_superan_plan EXCEPTION;
@@ -27,7 +27,7 @@ BEGIN
     SELECT s.id_suscripcion,
            s.id_plan,
            p.nombre,
-           p.max_perfiles
+           p.maximo_perfiles
     INTO   v_id_suscripcion,
            v_id_plan_actual,
            v_nombre_plan_actual,
@@ -39,7 +39,7 @@ BEGIN
 
     -- 2. Obtener datos del nuevo plan.
     SELECT nombre,
-           max_perfiles
+           maximo_perfiles
     INTO   v_nombre_plan_nuevo,
            v_perfiles_plan_nuevo
     FROM   Plan
