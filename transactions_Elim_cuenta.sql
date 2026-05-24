@@ -1,14 +1,3 @@
-Select * from favorito;
-
-/*
-Transacción de eliminación de cuenta:
-Eliminar calificaciones, 
-favoritos, 
-reproducciones, 
-perfiles, 
-pagos y finalmente el usuario.
-Debe ser todo o nada.
-*/
 CREATE OR REPLACE PROCEDURE eliminar_cuenta_usuario (
     p_id_usuario IN Usuario.id_usuario%TYPE
 )
@@ -19,7 +8,7 @@ BEGIN
     -- ELIMINAR CALIFICACIONES
     ----------------------------------------------------------------
     DELETE FROM Calificacion
-    WHERE perfil_id IN (
+    WHERE id_perfil IN (
         SELECT perfil_id
         FROM Perfil
         WHERE usuario_id_usuario = p_id_usuario
@@ -29,7 +18,7 @@ BEGIN
     -- ELIMINAR FAVORITOS
     ----------------------------------------------------------------
     DELETE FROM Favorito
-    WHERE perfil_id IN (
+    WHERE id_perfil IN (
         SELECT perfil_id
         FROM Perfil
         WHERE usuario_id_usuario = p_id_usuario
@@ -52,6 +41,16 @@ BEGIN
     WHERE usuario_id_usuario = p_id_usuario;
 
     ----------------------------------------------------------------
+    -- ELIMINAR DETALLES DE FACTURA
+    ----------------------------------------------------------------
+    DELETE FROM Detalle_Factura
+    WHERE id_factura IN (
+        SELECT id_factura
+        FROM Factura
+        WHERE id_usuario = p_id_usuario
+    );
+
+    ----------------------------------------------------------------
     -- ELIMINAR PAGOS
     ----------------------------------------------------------------
     DELETE FROM Pago
@@ -66,6 +65,19 @@ BEGIN
     ----------------------------------------------------------------
     DELETE FROM Factura
     WHERE id_usuario = p_id_usuario;
+
+    ----------------------------------------------------------------
+    -- ELIMINAR REPORTES
+    ----------------------------------------------------------------
+    DELETE FROM Reporte
+    WHERE id_usuario = p_id_usuario;
+
+    ----------------------------------------------------------------
+    -- ELIMINAR DESCUENTOS
+    ----------------------------------------------------------------
+    DELETE FROM Descuento
+    WHERE id_usuario_referido = p_id_usuario
+       OR id_usuario_referidor = p_id_usuario;
 
     ----------------------------------------------------------------
     -- ELIMINAR SUSCRIPCIONES
@@ -106,6 +118,6 @@ END;
 
 /*Ejecutarlo*/
 BEGIN
-    eliminar_cuenta_usuario(100);
+    eliminar_cuenta_usuario(30);
 END;
 /
