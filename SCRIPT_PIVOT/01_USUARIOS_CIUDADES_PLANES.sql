@@ -16,7 +16,6 @@ FROM (
         ON u.id_ciudad = c.id_ciudad
     INNER JOIN Plan p
         ON s.id_plan = p.id_plan
-    WHERE UPPER(s.estado_suscripcion) = 'ACTIVA'
 )
 PIVOT (
     COUNT(plan)
