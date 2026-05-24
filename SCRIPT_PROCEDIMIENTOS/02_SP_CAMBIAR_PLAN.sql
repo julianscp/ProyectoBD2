@@ -54,7 +54,7 @@ BEGIN
     SELECT COUNT(*)
     INTO   v_perfiles_actuales
     FROM   Perfil
-    WHERE  id_usuario = p_id_usuario;
+    WHERE  usuario_id_usuario = p_id_usuario;
 
     -- 5. Validar regla de negocio para downgrade.
     -- Si el nuevo plan permite menos perfiles que los que el usuario ya tiene,
