@@ -4,8 +4,8 @@
 
 SET SERVEROUTPUT ON;
 
-CREATE INDEX IDX_REPRODUCCION_FECHA_CONT_DISP
-ON Reproduccion (fecha_reproduccion, id_contenido, id_dispositivo);
+CREATE INDEX IDX_REP_CONT_DISP
+ON Reproduccion (fecha_inicio, id_contenido, id_dispositivo);
 
 BEGIN
     DBMS_OUTPUT.PUT_LINE('Indice creado correctamente: IDX_REPRODUCCION_FECHA_CONT_DISP');

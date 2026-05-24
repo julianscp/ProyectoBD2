@@ -20,12 +20,12 @@ FROM Reproduccion r
 JOIN Contenido c
     ON r.id_contenido = c.id_contenido
 JOIN Categoria cat
-    ON c.id_categoria = cat.id_categoria
+    ON c.id_tipo_categoria = cat.id_tipo_categoria
 JOIN Dispositivo d
     ON r.id_dispositivo = d.id_dispositivo
 LEFT JOIN Calificacion cal
     ON cal.id_contenido = c.id_contenido
-WHERE r.fecha_reproduccion >= DATE '2025-01-01'
+WHERE r.fecha_inicio >= DATE '2025-01-01'
 GROUP BY
     c.id_contenido,
     c.titulo,
@@ -56,12 +56,12 @@ FROM Reproduccion r
 JOIN Contenido c
     ON r.id_contenido = c.id_contenido
 JOIN Categoria cat
-    ON c.id_categoria = cat.id_categoria
+    ON c.id_tipo_categoria = cat.id_tipo_categoria
 JOIN Dispositivo d
     ON r.id_dispositivo = d.id_dispositivo
 LEFT JOIN Calificacion cal
     ON cal.id_contenido = c.id_contenido
-WHERE r.fecha_reproduccion >= DATE '2025-01-01'
+WHERE r.fecha_inicio >= DATE '2025-01-01'
 GROUP BY
     c.id_contenido,
     c.titulo,

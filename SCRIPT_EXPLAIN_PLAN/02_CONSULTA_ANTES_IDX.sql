@@ -20,7 +20,7 @@ FROM Reproduccion r
 JOIN Contenido c
     ON r.id_contenido = c.id_contenido
 JOIN Categoria cat
-    ON c.id_categoria = cat.id_categoria
+    ON c.id_tipo_categoria = cat.id_tipo_categoria
 JOIN Dispositivo d
     ON r.id_dispositivo = d.id_dispositivo
 LEFT JOIN Calificacion cal
@@ -56,7 +56,7 @@ FROM Reproduccion r
 JOIN Contenido c
     ON r.id_contenido = c.id_contenido
 JOIN Categoria cat
-    ON c.id_categoria = cat.id_categoria
+    ON c.id_tipo_categoria = cat.id_tipo_categoria
 JOIN Dispositivo d
     ON r.id_dispositivo = d.id_dispositivo
 LEFT JOIN Calificacion cal
