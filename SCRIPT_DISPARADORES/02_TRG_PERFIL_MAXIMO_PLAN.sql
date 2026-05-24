@@ -21,12 +21,17 @@ COMPOUND TRIGGER
         v_plan_nombre Plan.nombre%TYPE;
         v_limite NUMBER;
     BEGIN
-        SELECT UPPER(p.nombre)
+        SELECT UPPER(nombre)
         INTO v_plan_nombre
-        FROM Suscripcion s
-        JOIN Plan p
-            ON s.id_plan = p.id_plan
-        WHERE s.id_usuario = p_id_usuario;
+        FROM (
+            SELECT UPPER(p.nombre)
+            FROM Suscripcion s
+            JOIN Plan p
+                ON s.id_plan = p.id_plan
+            WHERE s.id_usuario = p_id_usuario
+            ORDER BY FECHA_FINAL DESC
+        )
+        WHERE ROWNUM <= 1;        
 
         CASE v_plan_nombre
             WHEN 'BASICO' THEN
@@ -87,7 +92,9 @@ COMPOUND TRIGGER
             FROM Perfil
             WHERE usuario_id_usuario = v_id_usuario;
 
-            IF v_total_perfiles > v_limite_perfiles THEN
+            v_total_perfiles := v_total_perfiles-1;
+
+            IF v_total_perfiles >= v_limite_perfiles THEN
                 RAISE_APPLICATION_ERROR(
                     -20044,
                     'No se puede crear el perfil. El usuario ' || v_id_usuario ||
