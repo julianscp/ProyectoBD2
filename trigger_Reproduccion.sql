@@ -1,6 +1,7 @@
 
 /*Trigger a nivel de fila en REPRODUCCIONES: Cada vez que se inserta una reproducción, verificar que el usuario tenga una cuenta activa (estado_cuenta = 'ACTIVO'). 
 Si no, rechazar la inserción.*/
+
 CREATE OR REPLACE TRIGGER trg_verificar_cuenta_activa
 BEFORE INSERT ON Reproduccion
 FOR EACH ROW
