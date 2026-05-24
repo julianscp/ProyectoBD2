@@ -18,10 +18,10 @@ CREATE OR REPLACE PROCEDURE SP_REGISTRAR_USUARIO (
     p_id_metodo_pago   IN INTEGER,
     p_monto_pago       IN FLOAT
 ) AS
-    v_id_usuario       INTEGER;
-    v_id_suscripcion   INTEGER;
-    v_id_factura       INTEGER;
-    v_id_perfil        INTEGER;
+    v_id_usuario       NUMBER;
+    v_id_suscripcion   NUMBER;
+    v_id_factura       NUMBER;
+    v_id_perfil        NUMBER;
     v_correo_existe    NUMBER;
     v_plan_existe      NUMBER;
     v_metodo_pago_existe NUMBER;
@@ -69,7 +69,7 @@ BEGIN
         RAISE_APPLICATION_ERROR(-20004, 'El monto del pago (' || p_monto_pago || 
                                  ') no coincide con el precio del plan (' || v_precio_plan || ').');
     END IF;
-    
+       DBMS_OUTPUT.PUT_LINE('punto 1');
     -- ============================================================
     -- 2. GENERAR IDs (usando secuencias si existen, si no, máximo+1)
     -- ============================================================
@@ -183,7 +183,7 @@ BEGIN
         v_id_factura,
         SYSDATE,
         p_monto_pago,
-        'Pagado'
+        'EXITOSO'
     );
     
     -- ============================================================
@@ -207,7 +207,7 @@ EXCEPTION
     -- Manejo de errores: rollback al punto de guardado
     WHEN OTHERS THEN
         ROLLBACK TO sp_registrar_usuario;
-        DBMS_OUTPUT.PUT_LINE('❌ ERROR: ' || SQLERRM);
+        DBMS_OUTPUT.PUT_LINE('�?� ERROR: ' || SQLERRM);
         RAISE;
 END SP_REGISTRAR_USUARIO;
 /
@@ -223,12 +223,12 @@ BEGIN
         p_apellido_uno     => 'Rodriguez',
         p_apellido_dos     => 'Lopez',
         p_cedula           => '1234567890',
-        p_fecha_nacimiento => TO_DATE('15/05/1990', 'DD/MM/YYYY'),
+        p_fecha_nacimiento => TO_DATE('1990/05/15', 'YYYY/MM/DD'),
         p_correo           => 'ana.rodriguez@example.com',
         p_id_ciudad        => 1,                    -- Ej: Medellín
         p_id_plan          => 2,                    -- Ej: Plan Estándar
         p_id_metodo_pago   => 1,                    -- Ej: Tarjeta Crédito
-        p_monto_pago       => 14.99                 -- Monto del plan Estándar
+        p_monto_pago       => to_number ('29,99')                 -- Monto del plan Estándar
     );
 END;
 /
