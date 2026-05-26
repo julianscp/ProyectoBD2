@@ -1,0 +1,61 @@
+-- ===================================================================== --
+-- Archivo para la generación de registros necesarios para catalogos     --
+-- Empleados, usuarios, perfiles y areas                                 --
+-- ===================================================================== --
+
+INSERT INTO Empleado (id_empleado, id_cargo, id_supervisor, nombre_uno, nombre_dos, apellido_uno, apellido_dos) VALUES (100, 100, NULL, 'Carlos', 'Andres', 'Lopez', 'Garcia');
+INSERT INTO Empleado (id_empleado, id_cargo, id_supervisor, nombre_uno, nombre_dos, apellido_uno, apellido_dos) VALUES (101, 101, 100, 'Luisa', 'Fernanda', 'Martinez', 'Rios');
+INSERT INTO Empleado (id_empleado, id_cargo, id_supervisor, nombre_uno, nombre_dos, apellido_uno, apellido_dos) VALUES (102, 101, 100, 'Juan', 'Pablo', 'Gomez', 'Perez');
+INSERT INTO Empleado (id_empleado, id_cargo, id_supervisor, nombre_uno, nombre_dos, apellido_uno, apellido_dos) VALUES (103, 102, 100, 'Natalia', 'Andrea', 'Henao', 'Ruiz');
+INSERT INTO Empleado (id_empleado, id_cargo, id_supervisor, nombre_uno, nombre_dos, apellido_uno, apellido_dos) VALUES (104, 103, 100, 'Felipe', 'David', 'Cano', 'Torres');
+INSERT INTO Empleado (id_empleado, id_cargo, id_supervisor, nombre_uno, nombre_dos, apellido_uno, apellido_dos) VALUES (105, 104, 100, 'Valentina', 'Maria', 'Ospina', 'Diaz');
+INSERT INTO Departamento_empleado (es_lider, id_emp_department, id_departamento) VALUES ('S', 100, 100);
+INSERT INTO Departamento_empleado (es_lider, id_emp_department, id_departamento) VALUES ('S', 101, 101);
+INSERT INTO Departamento_empleado (es_lider, id_emp_department, id_departamento) VALUES ('N', 102, 101);
+INSERT INTO Departamento_empleado (es_lider, id_emp_department, id_departamento) VALUES ('N', 103, 100);
+INSERT INTO Departamento_empleado (es_lider, id_emp_department, id_departamento) VALUES ('S', 104, 104);
+INSERT INTO Departamento_empleado (es_lider, id_emp_department, id_departamento) VALUES ('S', 105, 102);
+INSERT INTO Usuario (id_usuario, id_ciudad, nombre_uno, nombre_dos, apellido_uno, apellido_dos, cedula, fecha_nacimiento, correo) VALUES (100, 100, 'Santiago', NULL, 'Trujillo', 'Patino', '1001001100', DATE '2000-05-20', 'santiago.trujillo100@mail.com');
+INSERT INTO Usuario (id_usuario, id_ciudad, nombre_uno, nombre_dos, apellido_uno, apellido_dos, cedula, fecha_nacimiento, correo) VALUES (101, 101, 'Laura', 'Sofia', 'Giraldo', 'Lopez', '1001001101', DATE '2001-06-21', 'laura.giraldo101@mail.com');
+INSERT INTO Usuario (id_usuario, id_ciudad, nombre_uno, nombre_dos, apellido_uno, apellido_dos, cedula, fecha_nacimiento, correo) VALUES (102, 102, 'Mateo', NULL, 'Castano', 'Rios', '1001001102', DATE '2002-07-22', 'mateo.castano102@mail.com');
+INSERT INTO Usuario (id_usuario, id_ciudad, nombre_uno, nombre_dos, apellido_uno, apellido_dos, cedula, fecha_nacimiento, correo) VALUES (103, 103, 'Camila', 'Andrea', 'Restrepo', 'Gil', '1001001103', DATE '2003-08-23', 'camila.restrepo103@mail.com');
+INSERT INTO Usuario (id_usuario, id_ciudad, nombre_uno, nombre_dos, apellido_uno, apellido_dos, cedula, fecha_nacimiento, correo) VALUES (104, 104, 'Daniel', NULL, 'Cardona', 'Mejia', '1001001104', DATE '2004-09-24', 'daniel.cardona104@mail.com');
+INSERT INTO Usuario (id_usuario, id_ciudad, nombre_uno, nombre_dos, apellido_uno, apellido_dos, cedula, fecha_nacimiento, correo) VALUES (105, 100, 'Valeria', NULL, 'Quintero', 'Velez', '1001001105', DATE '1990-10-25', 'valeria.quintero105@mail.com');
+INSERT INTO Usuario (id_usuario, id_ciudad, nombre_uno, nombre_dos, apellido_uno, apellido_dos, cedula, fecha_nacimiento, correo) VALUES (106, 101, 'Andres', 'Felipe', 'Morales', 'Cano', '1001001106', DATE '1991-11-26', 'andres.morales106@mail.com');
+INSERT INTO Usuario (id_usuario, id_ciudad, nombre_uno, nombre_dos, apellido_uno, apellido_dos, cedula, fecha_nacimiento, correo) VALUES (107, 102, 'Isabella', NULL, 'Salazar', 'Marin', '1001001107', DATE '1992-12-27', 'isabella.salazar107@mail.com');
+INSERT INTO Usuario (id_usuario, id_ciudad, nombre_uno, nombre_dos, apellido_uno, apellido_dos, cedula, fecha_nacimiento, correo) VALUES (108, 100, 'Sebastian', NULL, 'Duque', 'Arias', '1001001108', DATE '1993-01-01', 'sebastian.duque108@mail.com');
+INSERT INTO Usuario (id_usuario, id_ciudad, nombre_uno, nombre_dos, apellido_uno, apellido_dos, cedula, fecha_nacimiento, correo) VALUES (109, 103, 'Manuela', 'Jose', 'Gomez', 'Loaiza', '1001001109', DATE '1994-02-02', 'manuela.gomez109@mail.com');
+INSERT INTO Usuario (id_usuario, id_ciudad, nombre_uno, nombre_dos, apellido_uno, apellido_dos, cedula, fecha_nacimiento, correo) VALUES (110, 104, 'Nicolas', NULL, 'Rivera', 'Soto', '1001001110', DATE '1995-03-03', 'nicolas.rivera110@mail.com');
+INSERT INTO Usuario (id_usuario, id_ciudad, nombre_uno, nombre_dos, apellido_uno, apellido_dos, cedula, fecha_nacimiento, correo) VALUES (111, 100, 'Juliana', 'Maria', 'Pineda', 'Osorio', '1001001111', DATE '1996-04-04', 'juliana.pineda111@mail.com');
+INSERT INTO Usuario (id_usuario, id_ciudad, nombre_uno, nombre_dos, apellido_uno, apellido_dos, cedula, fecha_nacimiento, correo) VALUES (112, 101, 'Esteban', NULL, 'Franco', 'Mejia', '1001001112', DATE '1997-05-05', 'esteban.franco112@mail.com');
+INSERT INTO Usuario (id_usuario, id_ciudad, nombre_uno, nombre_dos, apellido_uno, apellido_dos, cedula, fecha_nacimiento, correo) VALUES (113, 102, 'Sara', 'Lucia', 'Aguirre', 'Vargas', '1001001113', DATE '1998-06-06', 'sara.aguirre113@mail.com');
+INSERT INTO Usuario (id_usuario, id_ciudad, nombre_uno, nombre_dos, apellido_uno, apellido_dos, cedula, fecha_nacimiento, correo) VALUES (114, 100, 'Tomas', NULL, 'Londono', 'Rojas', '1001001114', DATE '1999-07-07', 'tomas.londono114@mail.com');
+INSERT INTO Perfil (Perfil_ID, Usuario_id_usuario, nombre, avatar, es_infantil) VALUES (100, 100, 'Principal', 'avatar.png', 'N');
+INSERT INTO Perfil (Perfil_ID, Usuario_id_usuario, nombre, avatar, es_infantil) VALUES (101, 100, 'Kids', 'kids.png', 'S');
+INSERT INTO Perfil (Perfil_ID, Usuario_id_usuario, nombre, avatar, es_infantil) VALUES (102, 100, 'Invitado', 'guest.png', 'N');
+INSERT INTO Perfil (Perfil_ID, Usuario_id_usuario, nombre, avatar, es_infantil) VALUES (103, 101, 'Principal', 'avatar.png', 'N');
+INSERT INTO Perfil (Perfil_ID, Usuario_id_usuario, nombre, avatar, es_infantil) VALUES (104, 101, 'Kids', 'kids.png', 'S');
+INSERT INTO Perfil (Perfil_ID, Usuario_id_usuario, nombre, avatar, es_infantil) VALUES (105, 102, 'Principal', 'avatar.png', 'N');
+INSERT INTO Perfil (Perfil_ID, Usuario_id_usuario, nombre, avatar, es_infantil) VALUES (106, 103, 'Principal', 'avatar.png', 'N');
+INSERT INTO Perfil (Perfil_ID, Usuario_id_usuario, nombre, avatar, es_infantil) VALUES (107, 103, 'Kids', 'kids.png', 'S');
+INSERT INTO Perfil (Perfil_ID, Usuario_id_usuario, nombre, avatar, es_infantil) VALUES (108, 104, 'Principal', 'avatar.png', 'N');
+INSERT INTO Perfil (Perfil_ID, Usuario_id_usuario, nombre, avatar, es_infantil) VALUES (109, 104, 'Kids', 'kids.png', 'S');
+INSERT INTO Perfil (Perfil_ID, Usuario_id_usuario, nombre, avatar, es_infantil) VALUES (110, 104, 'Invitado', 'guest.png', 'N');
+INSERT INTO Perfil (Perfil_ID, Usuario_id_usuario, nombre, avatar, es_infantil) VALUES (111, 105, 'Principal', 'avatar.png', 'N');
+INSERT INTO Perfil (Perfil_ID, Usuario_id_usuario, nombre, avatar, es_infantil) VALUES (112, 106, 'Principal', 'avatar.png', 'N');
+INSERT INTO Perfil (Perfil_ID, Usuario_id_usuario, nombre, avatar, es_infantil) VALUES (113, 106, 'Kids', 'kids.png', 'S');
+INSERT INTO Perfil (Perfil_ID, Usuario_id_usuario, nombre, avatar, es_infantil) VALUES (114, 107, 'Principal', 'avatar.png', 'N');
+INSERT INTO Perfil (Perfil_ID, Usuario_id_usuario, nombre, avatar, es_infantil) VALUES (115, 108, 'Principal', 'avatar.png', 'N');
+INSERT INTO Perfil (Perfil_ID, Usuario_id_usuario, nombre, avatar, es_infantil) VALUES (116, 108, 'Kids', 'kids.png', 'S');
+INSERT INTO Perfil (Perfil_ID, Usuario_id_usuario, nombre, avatar, es_infantil) VALUES (117, 108, 'Invitado', 'guest.png', 'N');
+INSERT INTO Perfil (Perfil_ID, Usuario_id_usuario, nombre, avatar, es_infantil) VALUES (118, 109, 'Principal', 'avatar.png', 'N');
+INSERT INTO Perfil (Perfil_ID, Usuario_id_usuario, nombre, avatar, es_infantil) VALUES (119, 110, 'Principal', 'avatar.png', 'N');
+INSERT INTO Perfil (Perfil_ID, Usuario_id_usuario, nombre, avatar, es_infantil) VALUES (120, 110, 'Kids', 'kids.png', 'S');
+INSERT INTO Perfil (Perfil_ID, Usuario_id_usuario, nombre, avatar, es_infantil) VALUES (121, 111, 'Principal', 'avatar.png', 'N');
+INSERT INTO Perfil (Perfil_ID, Usuario_id_usuario, nombre, avatar, es_infantil) VALUES (122, 112, 'Principal', 'avatar.png', 'N');
+INSERT INTO Perfil (Perfil_ID, Usuario_id_usuario, nombre, avatar, es_infantil) VALUES (123, 112, 'Kids', 'kids.png', 'S');
+INSERT INTO Perfil (Perfil_ID, Usuario_id_usuario, nombre, avatar, es_infantil) VALUES (124, 112, 'Invitado', 'guest.png', 'N');
+INSERT INTO Perfil (Perfil_ID, Usuario_id_usuario, nombre, avatar, es_infantil) VALUES (125, 113, 'Principal', 'avatar.png', 'N');
+INSERT INTO Perfil (Perfil_ID, Usuario_id_usuario, nombre, avatar, es_infantil) VALUES (126, 114, 'Principal', 'avatar.png', 'N');
+INSERT INTO Perfil (Perfil_ID, Usuario_id_usuario, nombre, avatar, es_infantil) VALUES (127, 114, 'Kids', 'kids.png', 'S');
+COMMIT;
